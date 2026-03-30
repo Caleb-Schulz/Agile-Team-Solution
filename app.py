@@ -1,8 +1,6 @@
 import streamlit as st
 import pandas as pd
 
-import logic
-
 
 #Caleb Schulz - Task B - inputs
 # Creating session state
@@ -65,6 +63,7 @@ df = pd.DataFrame(st.session_state.students)
 #End of Task B
 
 # Caleb Schulz - Task D - Visualization
+# import logic
 
 st.header("Student Grade Visualization")
 
