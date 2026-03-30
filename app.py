@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 
+import logic
+
 
 #Caleb Schulz - Task B - inputs
 # Creating session state
@@ -61,3 +63,23 @@ df = pd.DataFrame(st.session_state.students)
 # st.dataframe(df)
 
 #End of Task B
+
+# Caleb Schulz - Task D - Visualization
+
+st.header("Student Grade Visualization")
+
+if not df.empty:
+    # Get Distribution Data from logic file
+    distribution = logic.get_grade_distribution(df_logic)
+
+    # Creating Bar Chart
+    if not distribution.empty:
+        st.subheader("Grade Distribution")
+        st.bar_chart(distribution)
+    else:
+        st.info("No grade data available to visualize.")
+
+else:
+    st.info("Add student data in the sidebar to see visualizations.")
+
+# End of Task D
