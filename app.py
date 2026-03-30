@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-
+from logic import calculate_stats, get_grade_distribution
 
 #Caleb Schulz - Task B - inputs
 # Creating session state
@@ -61,3 +61,23 @@ df = pd.DataFrame(st.session_state.students)
 # st.dataframe(df)
 
 #End of Task B
+
+# Start of Task D - Johnathan Nguyen
+st.title("Faculty Grade Dashboard")
+
+if not df.empty:
+    stats = calculate_stats(df)
+    distribution = get_grade_distribution(df)
+
+    col1, col2, col3 = st.columns(3)
+    col1.metric("Average", round(stats["average"], 1))
+    col2.metric("Highest", stats["highest"])
+    col3.metric("Lowest", stats["lowest"])
+
+    st.subheader("Grade Distribution")
+    st.bar_chart(distribution)
+
+    st.subheader("Current Roster")
+    st.dataframe(df)
+else:
+    st.info("No students added yet.")
