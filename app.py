@@ -62,7 +62,7 @@ df = pd.DataFrame(st.session_state.students)
 
 #End of Task B
 
-# Start of Task D - Johnathan Nguyen
+# Start of Task C/D - Johnathan Nguyen
 st.title("Faculty Grade Dashboard")
 
 if not df.empty:
@@ -81,3 +81,4 @@ if not df.empty:
     st.dataframe(df)
 else:
     st.info("No students added yet.")
+#End of Task C/D
